@@ -5,9 +5,9 @@
 \alias{wh_paginate.webhoser}
 \title{Paginate}
 \usage{
-wh_paginate(wh, p = Inf, quiet = FALSE)
+wh_paginate(wh, p = Inf, quiet = !interactive())
 
-\method{wh_paginate}{webhoser}(wh, p = Inf, quiet = FALSE)
+\method{wh_paginate}{webhoser}(wh, p = Inf, quiet = !interactive())
 }
 \arguments{
 \item{wh}{object of class \code{webhoser} as returned by \code{\link{wh_news_filter}}.}
@@ -15,6 +15,9 @@ wh_paginate(wh, p = Inf, quiet = FALSE)
 \item{p}{number of pages defaults to \code{Inf}.}
 
 \item{quiet}{if \code{FALSE} does not return useful information to console.}
+}
+\value{
+object of class \code{webhoser}
 }
 \description{
 Paginate through query.
@@ -24,8 +27,8 @@ Paginate through query.
 token <- <- wh_token("xXX-x0X0xX0X-00X")
 
 token \%>\%
-  wh_news_filter(q = "Barack Obama") \%>\%
-  wh_paginate(p = 3) -> barack
+  wh_news_filter(q = "World Economic Forum") \%>\%
+  wh_paginate(p = 3) -> Wef
 }
 
 }

@@ -41,6 +41,8 @@
 #'   \item{rating}
 #' }
 #'
+#' @return object of class \code{webhoser}
+#'
 #' @examples
 #' \dontrun{
 #' token <- wh_token("xXX-x0X0xX0X-00X")
@@ -51,7 +53,7 @@
 #' @export
 wh_news_filter <- function(token, q, ts = Sys.time() - (3 * 24 * 60 * 60), sort = NULL, order = NULL,
                       accuracy = NULL, highlight = NULL, latest = NULL,
-                      quiet = FALSE){
+                      quiet = !interactive()){
 
   if(missing(token) || missing(q))
     stop("must pass token and q", call. = FALSE)

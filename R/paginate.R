@@ -6,24 +6,26 @@
 #' @param p number of pages defaults to \code{Inf}.
 #' @param quiet if \code{FALSE} does not return useful information to console.
 #'
+#' @return object of class \code{webhoser}
+#'
 #' @examples
 #' \dontrun{
 #' token <- <- wh_token("xXX-x0X0xX0X-00X")
 #'
 #' token %>%
-#'   wh_news_filter(q = "Barack Obama") %>%
-#'   wh_paginate(p = 3) -> barack
+#'   wh_news_filter(q = "World Economic Forum") %>%
+#'   wh_paginate(p = 3) -> Wef
 #' }
 #'
 #' @importFrom methods new
 #' @rdname wh_paginate
 #' @export
-wh_paginate <- function(wh, p = Inf, quiet = FALSE) UseMethod("wh_paginate")
+wh_paginate <- function(wh, p = Inf, quiet = !interactive()) UseMethod("wh_paginate")
 
 #' @rdname wh_paginate
 #' @method wh_paginate webhoser
 #' @export
-wh_paginate.webhoser <- function(wh, p = Inf, quiet = FALSE){
+wh_paginate.webhoser <- function(wh, p = Inf, quiet = !interactive()){
 
   if(!isTRUE(quiet) && is.infinite(p))
     warning("infinite paging", call. = FALSE)

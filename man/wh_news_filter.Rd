@@ -6,7 +6,7 @@
 \usage{
 wh_news_filter(token, q, ts = Sys.time() - (3 * 24 * 60 * 60), sort = NULL,
   order = NULL, accuracy = NULL, highlight = NULL, latest = NULL,
-  quiet = FALSE)
+  quiet = !interactive())
 }
 \arguments{
 \item{token}{your token as returned by \code{\link{wh_token}}.}
@@ -32,6 +32,9 @@ The matched keywords will be surrounded by \code{<em/>} tags.}
 \item{latest}{this will return the latest 100 crawled posts matching your query (NOT recommended).}
 
 \item{quiet}{if \code{FALSE} does not return useful information to console.}
+}
+\value{
+object of class \code{webhoser}
 }
 \description{
 Get access to structured posts data from news articles, blog posts and online discussions.
