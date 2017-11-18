@@ -12,5 +12,6 @@ Imports:
   magrittr,
   methods,
   jsonlite,
-  plyr
+  plyr,
+  purrr
 RoxygenNote: 6.0.1

@@ -16,5 +16,8 @@ clean_posts <- function(x){
   x[["published"]] <- as.POSIXct(x[["published"]],
                                  "%Y-%m-%dT%H:%M:%S%OS+03:00",
                                  tz = "Israel")
+  x[["thread.published"]] <- as.POSIXct(x[["thread.published"]],
+                                        "%Y-%m-%dT%H:%M:%S%OS+03:00",
+                                        tz = "Israel")
   x
 }
