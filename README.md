@@ -5,6 +5,9 @@
 ## Function
 
 * `wh_token` - setup token
+* `wh_news_filter` - Get news
+* `wh_paginate` - paginate
+* `wh_frame` - parse results
 
 ## Examples
 
@@ -13,6 +16,6 @@ token <- <- wh_token("xXX-x0X0xX0X-00X") # setup token
 
 # get three pages on Barack Obama
 token %>%  
-  wh_news_filter(q = "Barack Obama") %>% # basic example
-  wh_paginate(p = 3) -> barack3
+  wh_news_filter(q = "World Economic Forum") %>% # basic example
+  wh_paginate(p = 3) -> wef
 ```

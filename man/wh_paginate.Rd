@@ -19,3 +19,13 @@ wh_paginate(wh, p = Inf, quiet = FALSE)
 \description{
 Paginate through query.
 }
+\examples{
+\dontrun{
+token <- <- wh_token("xXX-x0X0xX0X-00X")
+
+token \%>\%
+  wh_news_filter(q = "Barack Obama") \%>\%
+  wh_paginate(p = 3) -> barack
+}
+
+}

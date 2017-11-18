@@ -22,7 +22,7 @@ wh_paginate <- function(wh, p = Inf, quiet = FALSE) UseMethod("wh_paginate")
 
 #' @rdname wh_paginate
 #' @method wh_paginate webhoser
-#' @S3method wh_paginate webhoser
+#' @export
 wh_paginate.webhoser <- function(wh, p = Inf, quiet = FALSE){
 
   if(!isTRUE(quiet) && is.infinite(p))
@@ -36,7 +36,10 @@ wh_paginate.webhoser <- function(wh, p = Inf, quiet = FALSE){
 
     response <- httr::GET(uri) # GET response
 
-    content <- httr::content(response) # parse response
+    httr::stop_for_status(response) # check for errors
+
+    content <- httr::content(response, as="text", encoding = "UTF-8")
+    content <- jsonlite::fromJSON(content, flatten=TRUE)
 
     wh <- appendWebhose(wh, content) # append
 

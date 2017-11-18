@@ -50,7 +50,8 @@
 #'
 #' @export
 wh_news_filter <- function(token, q, ts = Sys.time() - (3 * 24 * 60 * 60), sort = NULL, order = NULL,
-                      accuracy = NULL, highlight = NULL, latest = NULL, quiet = FALSE){
+                      accuracy = NULL, highlight = NULL, latest = NULL,
+                      quiet = FALSE){
 
   if(missing(token) || missing(q))
     stop("must pass token and q", call. = FALSE)
@@ -76,7 +77,10 @@ wh_news_filter <- function(token, q, ts = Sys.time() - (3 * 24 * 60 * 60), sort 
 
   response <- httr::GET(uri_built)
 
-  content <- httr::content(response)
+  httr::stop_for_status(response)
+
+  content <- httr::content(response, as="text", encoding = "UTF-8")
+  content <- jsonlite::fromJSON(content, flatten=TRUE)
 
   if(!isTRUE(quiet))
     message(content$requestsLeft, "queries left.")
