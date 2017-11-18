@@ -10,7 +10,7 @@ wh_paginate(wh, p = Inf, quiet = !interactive())
 \method{wh_paginate}{webhoser}(wh, p = Inf, quiet = !interactive())
 }
 \arguments{
-\item{wh}{object of class \code{webhoser} as returned by \code{\link{wh_news_filter}}.}
+\item{wh}{object of class \code{webhoser} as returned by \code{\link{wh_news}}.}
 
 \item{p}{number of pages defaults to \code{Inf}.}
 
@@ -27,7 +27,7 @@ Paginate through query.
 token <- <- wh_token("xXX-x0X0xX0X-00X")
 
 token \%>\%
-  wh_news_filter(q = "World Economic Forum") \%>\%
+  wh_news(q = "World Economic Forum") \%>\%
   wh_paginate(p = 3) -> Wef
 }
 

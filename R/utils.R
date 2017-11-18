@@ -2,7 +2,8 @@ construct <- function(x){
   x[["totalResults"]] <- nrow(x[["posts"]]) # totalResults
   attr(x, "hidden") <- c("posts", "next") # hide for print
 
-  x[["posts"]] <- clean_posts(x[["posts"]])
+  if(length(x[["posts"]]))
+    x[["posts"]] <- clean_posts(x[["posts"]])
 
   structure(x, class = "webhoser") # webhoser object init
 }

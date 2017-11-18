@@ -10,12 +10,13 @@ wh_collect(wh, flatten = FALSE)
 \method{wh_collect}{webhoser}(wh, flatten = FALSE)
 }
 \arguments{
-\item{wh}{object of class \code{webhoser} as returned by \code{\link{wh_news_filter}}.}
+\item{wh}{object of class \code{webhoser} as returned by \code{\link{wh_news}}.}
 
 \item{flatten}{whether to flatten the collected results}
 }
 \value{
-nested \code{data.frame} if \code{flatten = FALSE}
+nested \code{data.frame} if \code{flatten = FALSE}. See
+\href{https://docs.webhose.io/v1.0/docs/output-reference}{official documentation}
 }
 \description{
 Collect results from \code{webhoser} object.
@@ -28,7 +29,7 @@ Collect results from \code{webhoser} object.
 token <- <- wh_token("xXX-x0X0xX0X-00X")
 
 token \%>\%
-  wh_news_filter(q = "World Economic Forum") \%>\%
+  wh_news(q = "World Economic Forum") \%>\%
   wh_paginate(p = 1) \%>\%
   wh_collect -> Wef
 }

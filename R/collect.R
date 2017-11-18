@@ -2,19 +2,20 @@
 #'
 #' Collect results from \code{webhoser} object.
 #'
-#' @param wh object of class \code{webhoser} as returned by \code{\link{wh_news_filter}}.
+#' @param wh object of class \code{webhoser} as returned by \code{\link{wh_news}}.
 #' @param flatten whether to flatten the collected results
 #'
 #' @details \code{flatten} ignores sentiment of entities
 #'
-#' @return nested \code{data.frame} if \code{flatten = FALSE}
+#' @return nested \code{data.frame} if \code{flatten = FALSE}. See
+#' \href{https://docs.webhose.io/v1.0/docs/output-reference}{official documentation}
 #'
 #' @examples
 #' \dontrun{
 #' token <- <- wh_token("xXX-x0X0xX0X-00X")
 #'
 #' token %>%
-#'   wh_news_filter(q = "World Economic Forum") %>%
+#'   wh_news(q = "World Economic Forum") %>%
 #'   wh_paginate(p = 1) %>%
 #'   wh_collect -> Wef
 #' }

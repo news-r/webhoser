@@ -2,7 +2,7 @@
 #'
 #' Paginate through query.
 #'
-#' @param wh object of class \code{webhoser} as returned by \code{\link{wh_news_filter}}.
+#' @param wh object of class \code{webhoser} as returned by \code{\link{wh_news}}.
 #' @param p number of pages defaults to \code{Inf}.
 #' @param quiet if \code{FALSE} does not return useful information to console.
 #'
@@ -13,7 +13,7 @@
 #' token <- <- wh_token("xXX-x0X0xX0X-00X")
 #'
 #' token %>%
-#'   wh_news_filter(q = "World Economic Forum") %>%
+#'   wh_news(q = "World Economic Forum") %>%
 #'   wh_paginate(p = 3) -> Wef
 #' }
 #'

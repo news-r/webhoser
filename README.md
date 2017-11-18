@@ -16,17 +16,17 @@ token <- <- wh_token("xXX-x0X0xX0X-00X") # setup token
 
 # basic
 token %>% 
-  wh_news_filter(q = "World Economic Forum") %>% # get news
+  wh_news(q = "World Economic Forum") %>% # get news
   wh_collect -> basic
   
 # basic
 token %>% 
-  wh_news_filter(q = "World Economic Forum") %>% # get news
+  wh_news(q = "World Economic Forum") %>% # get news
   wh_collect(TRUE) -> flat  # flatten results
 
 # get three pages on Barack Obama
 token %>%  
-  wh_news_filter(q = '"World Economic Forum" OR WEF') %>% 
+  wh_news(q = '"World Economic Forum" OR WEF') %>% 
   wh_paginate(p = 3) %>% 
   wh_collect -> wef
 ```

@@ -41,17 +41,20 @@
 #'   \item{rating}
 #' }
 #'
+#' See \href{https://docs.webhose.io/v1.0/docs/filters-reference}{official documentation}
+#' of \code{Filters call}.
+#'
 #' @return object of class \code{webhoser}
 #'
 #' @examples
 #' \dontrun{
 #' token <- wh_token("xXX-x0X0xX0X-00X")
 #'
-#' barack <- wh_news_filter(token, q = "Barack Obama")
+#' barack <- wh_news(token, q = "Barack Obama")
 #' }
 #'
 #' @export
-wh_news_filter <- function(token, q, ts = Sys.time() - (3 * 24 * 60 * 60), sort = NULL, order = NULL,
+wh_news <- function(token, q, ts = Sys.time() - (3 * 24 * 60 * 60), sort = NULL, order = NULL,
                       accuracy = NULL, highlight = NULL, latest = NULL,
                       quiet = !interactive()){
 
