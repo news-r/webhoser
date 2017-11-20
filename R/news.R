@@ -15,7 +15,7 @@
 #' the total matching posts (with lower confidence).
 #' @param highlight return the fragments in the post that matched the textual Boolean query.
 #' The matched keywords will be surrounded by \code{<em/>} tags.
-#' @param latest this will return the latest 100 crawled posts matching your query (NOT recommended).
+#' @param latest this will return the latest 100 crawled posts matching your query (**NOT** recommended).
 #' @param quiet if \code{FALSE} does not return useful information to console.
 #'
 #' @details
@@ -41,8 +41,7 @@
 #'   \item{rating}
 #' }
 #'
-#' See \href{https://docs.webhose.io/v1.0/docs/filters-reference}{official documentation}
-#' of \code{Filters call}.
+#' See \href{https://docs.webhose.io/v1.0/docs/filters-reference}{official documentation} for valid filters.
 #'
 #' @return object of class \code{webhoser}
 #'
@@ -50,13 +49,19 @@
 #' \dontrun{
 #' token <- wh_token("xXX-x0X0xX0X-00X")
 #'
-#' barack <- wh_news(token, q = "Barack Obama")
+#' wef <- wh_news(token, q = '"World Economic Forum"') %>%  # use quote marks!
+#'   wh_collect() # collect results
+#'
+#' token %>%
+#'   wh_news(q = '"World Economic Forum" OR Davos') %>%
+#'   wh_paginate(p = 1) %>% # get 1 more page of result
+#'   wh_collect() -> davos
 #' }
 #'
 #' @export
 wh_news <- function(token, q, ts = Sys.time() - (3 * 24 * 60 * 60), sort = NULL, order = NULL,
-                      accuracy = NULL, highlight = NULL, latest = NULL,
-                      quiet = !interactive()){
+                    accuracy = NULL, highlight = NULL, latest = NULL,
+                    quiet = !interactive()){
 
   if(missing(token) || missing(q))
     stop("must pass token and q", call. = FALSE)
@@ -84,8 +89,8 @@ wh_news <- function(token, q, ts = Sys.time() - (3 * 24 * 60 * 60), sort = NULL,
 
   httr::stop_for_status(response)
 
-  content <- httr::content(response, as="text", encoding = "UTF-8")
-  content <- jsonlite::fromJSON(content, flatten=TRUE)
+  content <- httr::content(response, as = "text", encoding = "UTF-8")
+  content <- jsonlite::fromJSON(content, flatten = TRUE)
 
   if(!isTRUE(quiet))
     message(content$requestsLeft, "queries left.")

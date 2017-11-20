@@ -30,6 +30,9 @@ wh_paginate.webhoser <- function(wh, p = Inf, quiet = !interactive()){
   if(!isTRUE(quiet) && is.infinite(p))
     warning("infinite paging", call. = FALSE)
 
+  # adapt p to moreResultAvailable
+  p <- check_results(wh, p, quiet)
+
   crawled <- 1 # track crawled page
 
   while(length(wh$`next`) && crawled <= p){

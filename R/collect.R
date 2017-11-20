@@ -28,15 +28,22 @@ wh_collect <- function(wh, flatten = FALSE) UseMethod("wh_collect")
 #' @method wh_collect webhoser
 #' @export
 wh_collect.webhoser <- function(wh, flatten = FALSE){
-  res <- wh[["posts"]]
+
+  if(length(wh[["posts"]])){
+    res <- wh[["posts"]]
+
+    if(isTRUE(flatten)){
+      res$external_links <- res$external_links %>%
+        purrr::map_chr(paste, collapse = " ")
+
+      res$thread.site_categories <- res$thread.site_categories %>%
+        purrr::map_chr(paste, collapse = " ")
+    }
+  } else if(length(wh[["items"]])){
+    res <- wh[["items"]]
+  }
 
   if(isTRUE(flatten)){
-    res$external_links <- res$external_links %>%
-      purrr::map_chr(paste, collapse = " ")
-
-    res$thread.site_categories <- res$thread.site_categories %>%
-      purrr::map_chr(paste, collapse = " ")
-
     res$entities.locations <- res$entities.locations %>%
       purrr::map_chr(function(x){
         paste0(x$name, collapse = ",")
