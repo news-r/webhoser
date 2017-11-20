@@ -5,7 +5,7 @@
 #' @param wh object of class \code{webhoser} as returned by \code{\link{wh_news}}.
 #' @param flatten whether to flatten the collected results
 #'
-#' @details \code{flatten} ignores sentiment of entities
+#' @details \code{flatten} ignores sentiment of entities.
 #'
 #' @return nested \code{data.frame} if \code{flatten = FALSE}. See
 #' \href{https://docs.webhose.io/v1.0/docs/output-reference}{official documentation}

@@ -22,7 +22,7 @@ nested \code{data.frame} if \code{flatten = FALSE}. See
 Collect results from \code{webhoser} object.
 }
 \details{
-\code{flatten} ignores sentiment of entities
+\code{flatten} ignores sentiment of entities.
 }
 \examples{
 \dontrun{
