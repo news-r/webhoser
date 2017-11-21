@@ -32,7 +32,7 @@ token %>%
   wh_paginate(p = 1) %>% 
   wh_collect() -> davos_broadcasts
 
-# get three pages on Barack Obama.
+# get three pages on the WEF.
 # format dates
 token %>%  
   wh_news(q = '"World Economic Forum" OR WEF') %>% 
