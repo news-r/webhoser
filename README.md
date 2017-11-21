@@ -16,7 +16,12 @@
 ``` r
 token <- <- wh_token("xXX-x0X0xX0X-00X") # setup token
 
+# webhoser object
+token %>% 
+  wh_news(q = '"World Economic Forum"')
+
 # basic
+# collect results
 token %>% 
   wh_news(q = '"World Economic Forum"') %>% # get news
   wh_collect -> basic
