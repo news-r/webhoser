@@ -19,5 +19,5 @@
 #'
 #' @export
 wh_date <- function(date){
-  as.POSIXct(date, "%Y-%m-%dT%H:%M:%S%OS+03:00", tz = "Israel")
+  as.POSIXct(date, format = "%Y-%m-%dT%H:%M:%S%OS+03:00", tz = "Israel")
 }
