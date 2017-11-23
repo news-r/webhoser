@@ -12,7 +12,7 @@ wh_paginate(wh, p = Inf, quiet = !interactive())
 \arguments{
 \item{wh}{object of class \code{webhoser} as returned by \code{\link{wh_news}}.}
 
-\item{p}{number of pages defaults to \code{Inf}.}
+\item{p}{number of pages, defaults to \code{Inf} which will paginate as much as possible.}
 
 \item{quiet}{if \code{FALSE} does not return useful information to console.}
 }

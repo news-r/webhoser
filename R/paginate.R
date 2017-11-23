@@ -3,7 +3,7 @@
 #' Paginate through query.
 #'
 #' @param wh object of class \code{webhoser} as returned by \code{\link{wh_news}}.
-#' @param p number of pages defaults to \code{Inf}.
+#' @param p number of pages, defaults to \code{Inf} which will paginate as much as possible.
 #' @param quiet if \code{FALSE} does not return useful information to console.
 #'
 #' @return object of class \code{webhoser}

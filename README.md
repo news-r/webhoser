@@ -18,7 +18,7 @@ token <- <- wh_token("xXX-x0X0xX0X-00X") # setup token
 
 # webhoser object
 token %>% 
-  wh_news(q = '"World Economic Forum"')
+  wh_news(q = '"World Economic Forum" is_first:true language:english site_type:news') -> news
 
 # basic
 # collect results

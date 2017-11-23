@@ -25,11 +25,11 @@ check_results <- function(wh, p, quiet = FALSE){
 
   rez <- ifelse(names(wh)[1] == "items", 10, 100)
 
-  max <- ceiling(wh$moreResultsAvailable / 10)
+  max <- ceiling(wh$moreResultsAvailable / rez)
 
   ifelse(p > max, max, p)
   if(p > max){
-    warning("Crawling ", max, " page", call. = FALSE)
+    message("Crawling ", max, " page")
     max
   } else {
     p
