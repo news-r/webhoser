@@ -19,5 +19,5 @@
 #'
 #' @export
 wh_date <- function(date){
-  lubridate::as_datetime(news$posts$published)
+  lubridate::as_datetime(date)
 }
