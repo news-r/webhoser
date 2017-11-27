@@ -13,6 +13,5 @@ Imports:
   methods,
   jsonlite,
   plyr,
-  purrr,
-  lubridate
+  purrr
 RoxygenNote: 6.0.1
