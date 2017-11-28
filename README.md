@@ -45,3 +45,9 @@ token %>%
   wh_collect() %>% 
   dplyr::mutate(published = wh_date(published)) -> wef
 ```
+
+## Extension
+
+See [webhoser.extension](http://chlxintgitl01.weforum.local/JCOE/webhoser.extension) package for utility functions to extract features, format dates, and more.
+
+Author and maintainer: <Jean-Philippe.Coene@weforum.org>
