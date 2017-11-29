@@ -28,11 +28,13 @@
 #' }
 #'
 #' @export
-wh_broadcasts <- function(token, q, ts = Sys.time() - (3 * 24 * 60 * 60), highlight = NULL,
+wh_broadcasts <- function(token, q, ts = (Sys.time() - (3 * 24 * 60 * 60)), highlight = NULL,
                           latest = NULL, quiet = !interactive()){
 
   if(missing(token) || missing(q))
     stop("must pass token and q", call. = FALSE)
+
+  if(inherits(ts, "POSIXct")) ts <- as.numeric(ts)*1000
 
   uri <- getOption("webhoser_base_url")
   uri <- paste0(uri, "/broadcastFilter")
@@ -42,7 +44,7 @@ wh_broadcasts <- function(token, q, ts = Sys.time() - (3 * 24 * 60 * 60), highli
     token = token,
     format = "json",
     q = q,
-    ts = as.numeric(ts),
+    ts = ts,
     size = 10,
     highlight = highlight,
     latest = latest

@@ -4,7 +4,7 @@
 \alias{wh_broadcasts}
 \title{Get broadcasts}
 \usage{
-wh_broadcasts(token, q, ts = Sys.time() - (3 * 24 * 60 * 60),
+wh_broadcasts(token, q, ts = (Sys.time() - (3 * 24 * 60 * 60)),
   highlight = NULL, latest = NULL, quiet = !interactive())
 }
 \arguments{

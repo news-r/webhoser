@@ -4,7 +4,7 @@
 \alias{wh_news}
 \title{Get news}
 \usage{
-wh_news(token, q, ts = Sys.time() - (3 * 24 * 60 * 60), sort = NULL,
+wh_news(token, q, ts = (Sys.time() - (3 * 24 * 60 * 60)), sort = NULL,
   order = NULL, accuracy = NULL, highlight = NULL, latest = NULL,
   quiet = !interactive())
 }

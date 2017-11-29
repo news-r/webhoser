@@ -59,12 +59,14 @@
 #' }
 #'
 #' @export
-wh_news <- function(token, q, ts = Sys.time() - (3 * 24 * 60 * 60), sort = NULL, order = NULL,
+wh_news <- function(token, q, ts = (Sys.time() - (3 * 24 * 60 * 60)), sort = NULL, order = NULL,
                     accuracy = NULL, highlight = NULL, latest = NULL,
                     quiet = !interactive()){
 
   if(missing(token) || missing(q))
     stop("must pass token and q", call. = FALSE)
+
+  if(inherits(ts, "POSIXct")) ts <- as.numeric(ts)*1000
 
   uri <- getOption("webhoser_base_url")
   uri <- paste0(uri, "/filterWebContent")
