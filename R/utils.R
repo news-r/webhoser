@@ -30,8 +30,10 @@ check_results <- function(wh, p, quiet = FALSE){
   ifelse(p > max, max, p)
   if(p > max){
     message("Crawling ", max, " page")
-    max
+    pages <- max
   } else {
-    p
+    pages <- p
   }
+
+  pages
 }

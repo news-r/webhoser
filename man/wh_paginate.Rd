@@ -28,7 +28,7 @@ token <- <- wh_token("xXX-x0X0xX0X-00X")
 
 token \%>\%
   wh_news(q = "World Economic Forum") \%>\%
-  wh_paginate(p = 3) -> Wef
+  wh_paginate(p = 3) -> wef
 }
 
 }

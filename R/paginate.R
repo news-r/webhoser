@@ -14,7 +14,7 @@
 #'
 #' token %>%
 #'   wh_news(q = "World Economic Forum") %>%
-#'   wh_paginate(p = 3) -> Wef
+#'   wh_paginate(p = 3) -> wef
 #' }
 #'
 #' @importFrom methods new
@@ -43,7 +43,7 @@ wh_paginate.webhoser <- function(wh, p = Inf, quiet = !interactive()){
 
     httr::stop_for_status(response) # check for errors
 
-    content <- httr::content(response, as="text", encoding = "UTF-8")
+    content <- httr::content(response, as = "text", encoding = "UTF-8")
     content <- jsonlite::fromJSON(content, flatten=TRUE)
 
     wh <- appendWebhose(wh, content) # append
