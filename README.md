@@ -5,7 +5,7 @@
 ## Install
 
 ```r
-devtools::install_git("http://chlxintgitl01.weforum.local/JCOE/webhoser",
+devtools::install_git("http://chlxintgitl01.weforum.local/JCOE/webhoser.git",
   credentials = git2r::cred_user_pass('username', 'pwd'))
 ```
 
