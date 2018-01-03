@@ -46,6 +46,10 @@ wh_paginate.webhoser <- function(wh, p = Inf, quiet = !interactive()){
     content <- httr::content(response, as = "text", encoding = "UTF-8")
     content <- jsonlite::fromJSON(content, flatten=TRUE)
 
+    # break if API returns empty content
+    if(length(content[[1]]) == 0)
+      break
+
     wh <- appendWebhose(wh, content) # append
 
     crawled <- crawled + 1
