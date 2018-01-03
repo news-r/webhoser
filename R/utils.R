@@ -27,7 +27,6 @@ check_results <- function(wh, p, quiet = FALSE){
 
   max <- ceiling(wh$moreResultsAvailable / rez)
 
-  ifelse(p > max, max, p)
   if(p > max){
     message("Crawling ", max, " page")
     pages <- max
