@@ -2,6 +2,11 @@
 
 ![webhose.io](http://kinlane-productions.s3.amazonaws.com/api-evangelist-site/company/logos/webhose-io-logo.png)
 
+* [Install](#install)
+* [Function](#functions)
+* [Examples](#examples)
+* [Extension](#extension)
+
 ## Install
 
 ```r
@@ -9,14 +14,14 @@ devtools::install_git("http://chlxintgitl01.weforum.local/JCOE/webhoser",
   credentials = git2r::cred_user_pass('username', 'pwd'))
 ```
 
-## Function
+## Functions
 
 * `wh_token` - setup token
 * `wh_news` - Get news
 * `wh_broadcasts` - Get broadcast transcripts
 * `wh_paginate` - paginate
 * `wh_collect` - collect results
-* `wh_date` - format dates returned
+* ~~`wh_date` - format dates returned~~ Moved to `webhoser.extension`
 
 ## Examples
 
