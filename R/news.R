@@ -53,8 +53,8 @@
 #'   wh_collect() # collect results
 #'
 #' token %>%
-#'   wh_news(q = '"World Economic Forum" OR Davos') %>%
-#'   wh_paginate(p = 1) %>% # get 1 more page of result
+#'   wh_news(q = paste0('"World Economic Forum" OR Davos crawled>:', ts = (Sys.time() - (3 * 24 * 60 * 60)))) %>%
+#'   wh_paginate(p = 1, ts = (Sys.time() - (3 * 24 * 60 * 60))) %>% # get 1 more page of result
 #'   wh_collect() -> davos
 #' }
 #'
@@ -66,7 +66,7 @@ wh_news <- function(token, q, ts = (Sys.time() - (3 * 24 * 60 * 60)), sort = NUL
   if(missing(token) || missing(q))
     stop("must pass token and q", call. = FALSE)
 
-  if(inherits(ts, "POSIXct")) ts <- as.numeric(ts)
+  if(inherits(ts, "POSIXct") || inherits(ts, "POSIXlt")) ts <- paste0(as.character(as.numeric(ts) * 1000), '000')
 
   uri <- getOption("webhoser_base_url")
   uri <- paste0(uri, "/filterWebContent")
@@ -87,6 +87,7 @@ wh_news <- function(token, q, ts = (Sys.time() - (3 * 24 * 60 * 60)), sort = NUL
 
   uri_built <- httr::build_url(uri_parsed)
 
+  print(uri_built)
   response <- httr::GET(uri_built)
 
   httr::stop_for_status(response)
