@@ -53,7 +53,8 @@
 #'   wh_collect() # collect results
 #'
 #' token %>%
-#'   wh_news(q = paste0('"World Economic Forum" OR Davos crawled>:', ts = (Sys.time() - (3 * 24 * 60 * 60)))) %>%
+#'   wh_news(q = paste0('"World Economic Forum" OR Davos crawled>:',
+#'     ts = (Sys.time() - (3 * 24 * 60 * 60)))) %>%
 #'   wh_paginate(p = 1, ts = (Sys.time() - (3 * 24 * 60 * 60))) %>% # get 1 more page of result
 #'   wh_collect() -> davos
 #' }
@@ -87,7 +88,6 @@ wh_news <- function(token, q, ts = (Sys.time() - (3 * 24 * 60 * 60)), sort = NUL
 
   uri_built <- httr::build_url(uri_parsed)
 
-  print(uri_built)
   response <- httr::GET(uri_built)
 
   httr::stop_for_status(response)

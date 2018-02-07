@@ -3,10 +3,12 @@ construct <- function(x){
   if(length(x[["posts"]])){
     x[["totalResults"]] <- nrow(x[["posts"]]) # totalResults
     attr(x, "hidden") <- c("posts", "next") # hide for print
+    x[["remainingPages"]] <- ceiling(x[["webhoser_data"]]/100)
 
   } else if (length(x[["items"]])){
     x[["totalResults"]] <- nrow(x[["items"]]) # totalResults
     attr(x, "hidden") <- c("items", "next") # hide for print
+    x[["remainingPages"]] <- ceiling(x[["webhoser_data"]]/10)
   }
 
   structure(x, class = "webhoser") # webhoser object init
