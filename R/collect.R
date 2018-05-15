@@ -39,7 +39,7 @@ wh_collect.webhoser <- function(wh, flatten = FALSE){
       res$thread.site_categories <- res$thread.site_categories %>%
         purrr::map_chr(paste, collapse = " ")
     }
-  } else if(length(wh[["items"]])){
+  } else {
     res <- wh[["items"]]
   }
 
@@ -58,7 +58,10 @@ wh_collect.webhoser <- function(wh, flatten = FALSE){
       purrr::map_chr(function(x){
         paste0(x$name, collapse = ",")
       })
-  }
+	}
+
+	if (length(res) == 0)
+		res <- data.frame()
 
   res
 }
