@@ -2,3 +2,4 @@
 ^\.Rproj\.user$
 ^top100media\.csv$
 \.vs
+^\.travis\.yml$

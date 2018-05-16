@@ -1,5 +1,7 @@
 # webhoser
 
+[![Travis-CI Build Status](https://travis-ci.org/JohnCoene/webhoser.svg?branch=master)](https://travis-ci.org/JohnCoene/webhoser)
+
 ![webhose.io](http://kinlane-productions.s3.amazonaws.com/api-evangelist-site/company/logos/webhose-io-logo.png)
 
 * [Install](#install)
@@ -10,8 +12,7 @@
 ## Install
 
 ```r
-devtools::install_git("http://chlxintgitl01.weforum.local/JCOE/webhoser",
-  credentials = git2r::cred_user_pass('username', 'pwd'))
+devtools::install_github("JohnCoene/webhoser")
 ```
 
 ## Functions
@@ -57,9 +58,3 @@ token %>%
   wh_collect() %>% 
   dplyr::mutate(published = wh_date(published)) -> wef
 ```
-
-## Extension
-
-See [webhoser.extension](http://chlxintgitl01.weforum.local/JCOE/webhoser.extension) package for utility functions to extract features, format dates, and more.
-
-Author and maintainer: <Jean-Philippe.Coene@weforum.org>

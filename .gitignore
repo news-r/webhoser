@@ -3,3 +3,7 @@
 .RData
 webhoser.Rproj
 top100media.csv
+.vs/
+.sqlite
+.sln
+.Rproj
