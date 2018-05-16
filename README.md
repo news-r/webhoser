@@ -22,7 +22,7 @@ devtools::install_github("JohnCoene/webhoser")
 * `wh_broadcasts` - Get broadcast transcripts
 * `wh_paginate` - paginate
 * `wh_collect` - collect results
-* ~~`wh_date` - format dates returned~~ Moved to `webhoser.extension`
+* `wh_date` - format dates returned
 
 ## Examples
 
