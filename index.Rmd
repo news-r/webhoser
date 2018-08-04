@@ -15,15 +15,6 @@
 devtools::install_github("JohnCoene/webhoser")
 ```
 
-## Functions
-
-* `wh_token` - setup token
-* `wh_news` - Get news
-* `wh_broadcasts` - Get broadcast transcripts
-* `wh_paginate` - paginate
-* `wh_collect` - collect results
-* `wh_date` - format dates returned
-
 ## Examples
 
 ``` r
