@@ -2,7 +2,34 @@
 
 [![Travis-CI Build Status](https://travis-ci.org/JohnCoene/webhoser.svg?branch=master)](https://travis-ci.org/JohnCoene/webhoser)
 
-![webshoser](/man/figures/logo.png)
+```{r, include=FALSE}
+library(htmltools)
+```
+
+```{r, echo=FALSE}
+div(
+  class = "row",
+  div(
+    class = "col-md-2",
+    img(
+      src = "logo.png",
+      class = "img-responsive responsive-img"
+    )
+  ),
+  div(
+    class = "col-md-10",
+    "R wrapper to the", 
+    a(
+      "webhose.io",
+      href = "https://webhose.io/",
+      target = "_blank"
+    ), 
+    "API."
+  )
+)
+
+br()
+```
 
 * [Install](#install)
 * [Function](#functions)
