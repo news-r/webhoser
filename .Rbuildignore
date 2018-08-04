@@ -3,3 +3,4 @@
 ^top100media\.csv$
 \.vs
 ^\.travis\.yml$
+key.rds

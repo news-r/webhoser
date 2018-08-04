@@ -7,3 +7,5 @@ top100media.csv
 .sqlite
 .sln
 .Rproj
+key.rds
+inst/doc

@@ -1,0 +1,67 @@
+---
+title: "Get Started"
+author: "John Coene"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Get Started}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+library(webhoser)
+key <- readRDS("../key.rds")
+```
+
+Let's walk you through `webhoser` with a simple use case: we'll get articles and blog posts about the R programming language. But first, we need to authenticate, head over to [webhose.io](https://webhose.io/) if you do not have an account yet. The aforementioned account will give you an _API Key_, this is what you will use in the function below.
+
+```{r, eval=FALSE}
+(token <- wh_token("xXX-x0X0xX0X-00X"))
+```
+
+```{r, eval=TRUE, echo=FALSE}
+(token <- wh_token(key))
+```
+
+Great, now that we have a token, we can fetch some articles.
+
+```{r}
+token %>% 
+  wh_news(q = '"R programming language" OR "rstats" is_first:true language:english site_type:news') -> rstats
+```
+
+[webhose.io](https://webhose.io/) gives 1,000 results per month for free, `wh_news` and `wh_broadcasts` print the number of queries left by default.
+
+We can paginate through the results if we want more data; let's get five more pages.
+
+```{r}
+rstats %>% 
+  wh_paginate(5) -> rstats_pagingated
+
+class(rstats_pagingated)
+```
+
+So we fetched one page of results then using that object we paginated through 5 more pages. However, this returns an object of class `webhoser`. 
+
+```{r}
+rstats_df <- wh_collect(rstats_pagingated)
+class(rstats_df)
+```
+
+The above functions can be summed up to
+
+```{r, eval=FALSE}
+rstats <- token %>% 
+  wh_news(q = '"R programming language" OR "rstats" is_first:true language:english site_type:news') %>% 
+  wh_paginate(5) %>% 
+  wh_collect()
+```
+
+```{r, eval=TRUE, echo=FALSE}
+rstats <- rstats_df
+```
