@@ -7,7 +7,6 @@
 * [Install](#install)
 * [Function](#functions)
 * [Examples](#examples)
-* [Extension](#extension)
 
 ## Install
 

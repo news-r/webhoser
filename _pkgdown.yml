@@ -1,0 +1,26 @@
+url: http://webhoser.john-coene.com
+
+template:
+  params:
+    bootswatch: lumen
+    ganalytics: UA-74544116-1
+
+development:
+  mode: unreleased
+
+navbar:
+  title: "webhoser"
+  left:
+    - icon: fa-home
+      href: index.html
+    - text: "Reference"
+      href: "reference/"
+  right:
+    - icon: fa-github fa-lg
+      href: https://github.com/JohnCoene/webhoser
+    - icon: fa-bitbucket fa-lg
+      href: https://bitbucket.org/JohnCoene/webhoser
+
+authors:
+  John Coene:
+    href: http://john-coene.com
