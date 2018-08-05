@@ -7,6 +7,7 @@
 * [Install](#install)
 * [Function](#functions)
 * [Examples](#examples)
+* [Get Started](http://webhoser.john-coene.com/)
 
 ## Install
 
