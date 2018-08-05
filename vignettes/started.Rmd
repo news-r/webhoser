@@ -28,12 +28,17 @@ Let's walk you through `webhoser` with a simple use case: we'll get articles and
 (token <- wh_token(key))
 ```
 
-Great, now that we have a token, we can fetch some articles.
+Great, now that we have a token, we can fetch some articles. We'll use some basic boolean search arguments and filters to narrow down the search to english and news (excludes blogs). We can expect the number of articles about the R Programming Language to be relatively low so we'll extend the date range to make sure we get a decent number of articles (functions default to the last 3 days), we'll also limit the search to blogs as this is where we'd expect R to be mentioned.
 
 ```{r}
 token %>% 
-  wh_news(q = '"R programming language" OR "rstats" is_first:true language:english site_type:news') -> rstats
+  wh_news(
+    q = '"R programming" is_first:true language:english site_type:blogs',
+    ts = (Sys.time() - (30 * 24 * 60 * 60))
+  ) -> rstats
 ```
+
+_Note that with the free version you are limited to 30 days of results_
 
 [webhose.io](https://webhose.io/) gives 1,000 results per month for free, `wh_news` and `wh_broadcasts` print the number of queries left by default.
 
@@ -46,18 +51,24 @@ rstats %>%
 class(rstats_pagingated)
 ```
 
-So we fetched one page of results then using that object we paginated through 5 more pages. However, this returns an object of class `webhoser`. 
+So we fetched one page of results then using that object we paginated through 5 more pages. However, this returns an object of class `webhoser`. The `wh_collect` function takes another arguement `flatten` which defaults to `FALSE`.
+
+1. If `TRUE` the function attempts to flatten the results into a standard `data.frame`.
+2. If `FALSE` the function returns a nested `data.frame`.
 
 ```{r}
 rstats_df <- wh_collect(rstats_pagingated)
 class(rstats_df)
 ```
 
-The above functions can be summed up to
+The above functions can be summed up as:
 
 ```{r, eval=FALSE}
 rstats <- token %>% 
-  wh_news(q = '"R programming language" OR "rstats" is_first:true language:english site_type:news') %>% 
+  wh_news(
+    q = '"R programming" is_first:true language:english site_type:blogs',
+    ts = (Sys.time() - (30 * 24 * 60 * 60))
+  ) %>% 
   wh_paginate(5) %>% 
   wh_collect()
 ```
@@ -65,3 +76,19 @@ rstats <- token %>%
 ```{r, eval=TRUE, echo=FALSE}
 rstats <- rstats_df
 ```
+
+This returned `r nrow(rstats)` articles with lot of variables.
+
+```{r}
+names(rstats)
+```
+
+[webhoser.io](https://webhose.io/) does some entity extraction for us, so we do not have to do it ourselves, the `data.frame` includes entitities mentioned in the body of the text along with the sentiment associated with it:
+
+1. Locations
+2. Persons
+3. Organisations
+
+This, however, is only so accurate depending on the articles you fetch.
+
+[webhoser.io](https://webhose.io/) also lets you fetch broadcasts transcripts, happy text mining!

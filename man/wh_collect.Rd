@@ -12,7 +12,7 @@ wh_collect(wh, flatten = FALSE)
 \arguments{
 \item{wh}{object of class \code{webhoser} as returned by \code{\link{wh_news}}.}
 
-\item{flatten}{whether to flatten the collected results}
+\item{flatten}{whether to flatten the collected results.}
 }
 \value{
 nested \code{data.frame} if \code{flatten = FALSE}. See

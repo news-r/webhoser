@@ -13,6 +13,9 @@ navbar:
   left:
     - icon: fa-home
       href: index.html
+    - icon: fa-rocket
+      text: "Get Started"
+      href: "articles/started.html"
     - text: "Reference"
       href: "reference/"
   right:

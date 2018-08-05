@@ -86,6 +86,13 @@
   </a>
 </li>
 <li>
+  <a href="../articles/started.html">
+    <span class="fa fa-rocket"></span>
+     
+    Get Started
+  </a>
+</li>
+<li>
   <a href="../reference/">Reference</a>
 </li>
       </ul>
@@ -134,7 +141,7 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>token</th>
-      <td><p>your token as returned by <code>wh_token</code>.</p></td>
+      <td><p>your token as returned by <code><a href='wh_token.html'>wh_token</a></code>.</p></td>
     </tr>
     <tr>
       <th>q</th>
@@ -167,15 +174,15 @@ The matched keywords will be surrounded by <code>&lt;em/&gt;</code> tags.</p></t
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><span class='co'># NOT RUN {</span>
-<span class='no'>token</span> <span class='kw'>&lt;-</span> <span class='fu'>wh_token</span>(<span class='st'>"xXX-x0X0xX0X-00X"</span>)
+<span class='no'>token</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='wh_token.html'>wh_token</a></span>(<span class='st'>"xXX-x0X0xX0X-00X"</span>)
 
 <span class='no'>wef</span> <span class='kw'>&lt;-</span> <span class='fu'>wh_broadcasts</span>(<span class='no'>token</span>, <span class='kw'>q</span> <span class='kw'>=</span> <span class='st'>'"World Economic Forum"'</span>) <span class='kw'>%&gt;%</span>  <span class='co'># use quote marks!</span>
-  <span class='fu'>wh_collect</span>()
+  <span class='fu'><a href='wh_collect.html'>wh_collect</a></span>()
 
 <span class='no'>token</span> <span class='kw'>%&gt;%</span>
   <span class='fu'>wh_broadcasts</span>(<span class='no'>token</span>, <span class='kw'>q</span> <span class='kw'>=</span> <span class='st'>'Davos OR "World Economic Forum" OR WEF'</span>) <span class='kw'>%&gt;%</span>
-  <span class='fu'>wh_paginate</span>(<span class='kw'>p</span> <span class='kw'>=</span> <span class='fl'>2</span>) <span class='co'># 2 additional pages of results</span>
-  <span class='fu'>wh_collect</span>() <span class='kw'>-&gt;</span> <span class='no'>davos</span>
+  <span class='fu'><a href='wh_paginate.html'>wh_paginate</a></span>(<span class='kw'>p</span> <span class='kw'>=</span> <span class='fl'>2</span>) <span class='co'># 2 additional pages of results</span>
+  <span class='fu'><a href='wh_collect.html'>wh_collect</a></span>() <span class='kw'>-&gt;</span> <span class='no'>davos</span>
 <span class='co'># }</span><div class='input'>
 </div></pre>
   </div>

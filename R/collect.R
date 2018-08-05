@@ -3,7 +3,7 @@
 #' Collect results from \code{webhoser} object.
 #'
 #' @param wh object of class \code{webhoser} as returned by \code{\link{wh_news}}.
-#' @param flatten whether to flatten the collected results
+#' @param flatten whether to flatten the collected results.
 #'
 #' @details \code{flatten} ignores sentiment of entities.
 #'
