@@ -2,9 +2,9 @@
 
 # webhoser
 
-An R wrapper to the [webhose.io](https://webhose.io/) API.
-
 <img src = "/man/figures/logo.png" align = "right" />
+
+An R wrapper to the [webhose.io](https://webhose.io/) API.
 
 * [Install](#install)
 * [Function](#functions)
