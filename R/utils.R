@@ -30,7 +30,10 @@ check_results <- function(wh, p, quiet = FALSE){
   max <- ceiling(wh$moreResultsAvailable / rez)
 
   if(p > max){
-    message("Crawling ", max, " page")
+    cat(
+      crayon::yellow(cli::symbol$play),
+      "Crawling", max, "page(s)\n"
+    )
     pages <- max
   } else {
     pages <- p

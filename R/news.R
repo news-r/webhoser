@@ -49,14 +49,21 @@
 #' \dontrun{
 #' token <- wh_token("xXX-x0X0xX0X-00X")
 #'
-#' wef <- wh_news(token, q = '"World Economic Forum"') %>%  # use quote marks!
+#' rstats <- wh_news(token, q = '"Programming language"') %>%  # use quote marks!
 #'   wh_collect() # collect results
 #'
 #' token %>%
-#'   wh_news(q = paste0('"World Economic Forum" OR Davos crawled>:',
-#'     ts = (Sys.time() - (3 * 24 * 60 * 60)))) %>%
-#'   wh_paginate(p = 1, ts = (Sys.time() - (3 * 24 * 60 * 60))) %>% # get 1 more page of result
-#'   wh_collect() -> davos
+#'   wh_news(
+#'     q = paste0(
+#'       '"US President" OR Trump crawled>:',
+#'        as.numeric(Sys.time() - (3 * 24 * 60 * 60))
+#'      )
+#'   ) %>%
+#'   wh_paginate(
+#'     p = 1, 
+#'     ts = as.numeric(Sys.time() - (3 * 24 * 60 * 60))
+#'   ) %>% 
+#'   wh_collect() -> trump
 #' }
 #'
 #' @export
@@ -96,7 +103,7 @@ wh_news <- function(token, q, ts = (Sys.time() - (3 * 24 * 60 * 60)), sort = NUL
   content <- jsonlite::fromJSON(content, flatten = TRUE)
 
   if(!isTRUE(quiet))
-    message(content$requestsLeft, "queries left.")
+    cat(crayon::green(cli::symbol$pointer), crayon::red(content$requestsLeft), "queries left.\n")
 
   construct(content)
 }

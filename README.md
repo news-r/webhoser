@@ -1,8 +1,10 @@
-# webhoser
-
 [![Travis-CI Build Status](https://travis-ci.org/JohnCoene/webhoser.svg?branch=master)](https://travis-ci.org/JohnCoene/webhoser)
 
-![webshoser](/man/figures/logo.png)
+# webhoser
+
+An R wrapper to the [webhose.io](https://webhose.io/) API.
+
+<img src = "/man/figures/logo.png" align = "right" />
 
 * [Install](#install)
 * [Function](#functions)
@@ -17,7 +19,7 @@ devtools::install_github("JohnCoene/webhoser")
 
 ## Functions
 
-* `wh_token` - setup token
+* `wh_token` - Setup token (see [webhose.io](https://webhose.io/))
 * `wh_news` - Get news
 * `wh_broadcasts` - Get broadcast transcripts
 * `wh_paginate` - paginate
@@ -26,34 +28,28 @@ devtools::install_github("JohnCoene/webhoser")
 
 ## Examples
 
-``` r
-token <- <- wh_token("xXX-x0X0xX0X-00X") # setup token
+```r
+token <- wh_token("xXX-x0X0xX0X-00X") # setup token
 
 # webhoser object
 token %>% 
-  wh_news(q = '"World Economic Forum" is_first:true language:english site_type:news') -> news
+  wh_news(q = '"R programming language" is_first:true language:english site_type:news') -> news
 
 # basic
 # collect results
 token %>% 
-  wh_news(q = '"World Economic Forum"') %>% # get news
+  wh_news(q = '"R programming language"') %>% # get news
   wh_collect -> basic
   
 # flatten results
 token %>% 
-  wh_news(q = '"World Economic Forum" OR WEF') %>% # get news
+  wh_news(q = '"R programming language" OR rstats') %>% # get news
   wh_collect(TRUE) -> flat  # flatten results
-  
-# broadcasts
-token %>% 
-  wh_broadcasts('Davos AND WEF OR "World Economic Forum"') %>% 
-  wh_paginate(p = 1) %>% 
-  wh_collect() -> davos_broadcasts
 
-# get three pages on the WEF.
+# get three pages on the rstats
 # format dates
 token %>%  
-  wh_news(q = '"World Economic Forum" OR WEF') %>% 
+  wh_news(q = '"R programming language" OR rstats') %>% 
   wh_paginate(3) %>% 
   wh_collect() %>% 
   dplyr::mutate(published = wh_date(published)) -> wef

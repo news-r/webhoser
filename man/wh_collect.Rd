@@ -29,9 +29,9 @@ Collect results from \code{webhoser} object.
 token <- <- wh_token("xXX-x0X0xX0X-00X")
 
 token \%>\%
-  wh_news(q = "World Economic Forum") \%>\%
+  wh_news(q = "R programming language") \%>\%
   wh_paginate(p = 1) \%>\%
-  wh_collect -> Wef
+  wh_collect -> rstats
 }
 
 }

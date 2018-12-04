@@ -32,13 +32,13 @@ See \href{https://docs.webhose.io/docs/filters-reference-4}{official documentati
 \dontrun{
 token <- wh_token("xXX-x0X0xX0X-00X")
 
-wef <- wh_broadcasts(token, q = '"World Economic Forum"') \%>\%  # use quote marks!
+rstats <- wh_broadcasts(token, q = '"R programming language"') \%>\%  # use quote marks!
   wh_collect()
 
 token \%>\%
-  wh_broadcasts(token, q = 'Davos OR "World Economic Forum" OR WEF') \%>\%
+  wh_broadcasts(token, q = 'Trump OR "US President"') \%>\%
   wh_paginate(p = 2) # 2 additional pages of results
-  wh_collect() -> davos
+  wh_collect() -> trump
 }
 
 }

@@ -12,8 +12,13 @@ Imports:
   methods,
   jsonlite,
   plyr,
-  purrr
-RoxygenNote: 6.0.1
-Suggests: knitr,
-    rmarkdown
+  purrr,
+  cli,
+  crayon
+RoxygenNote: 6.1.1
+Suggests: 
+    knitr,
+    rmarkdown,
+    echarts4r,
+    dplyr
 VignetteBuilder: knitr

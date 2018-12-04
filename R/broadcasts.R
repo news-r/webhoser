@@ -18,18 +18,20 @@
 #' \dontrun{
 #' token <- wh_token("xXX-x0X0xX0X-00X")
 #'
-#' wef <- wh_broadcasts(token, q = '"World Economic Forum"') %>%  # use quote marks!
+#' rstats <- wh_broadcasts(token, q = '"R programming language"') %>%  # use quote marks!
 #'   wh_collect()
 #'
 #' token %>%
-#'   wh_broadcasts(token, q = 'Davos OR "World Economic Forum" OR WEF') %>%
+#'   wh_broadcasts(token, q = 'Trump OR "US President"') %>%
 #'   wh_paginate(p = 2) # 2 additional pages of results
-#'   wh_collect() -> davos
+#'   wh_collect() -> trump
 #' }
 #'
 #' @export
 wh_broadcasts <- function(token, q, ts = (Sys.time() - (3 * 24 * 60 * 60)), highlight = NULL,
                           latest = NULL, quiet = !interactive()){
+  
+  warning("This endpoint is no longer available", call. = FALSE)
 
   if(missing(token) || missing(q))
     stop("must pass token and q", call. = FALSE)

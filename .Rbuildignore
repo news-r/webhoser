@@ -4,3 +4,6 @@
 \.vs
 ^\.travis\.yml$
 key.rds
+_pkgdown.yml
+docs
+index.Rmd

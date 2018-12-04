@@ -14,9 +14,12 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
+library(dplyr)
 library(webhoser)
 key <- readRDS("../key.rds")
 ```
+
+# Setup
 
 Let's walk you through `webhoser` with a simple use case: we'll get articles and blog posts about the R programming language. But first, we need to authenticate, head over to [webhose.io](https://webhose.io/) if you do not have an account yet. The aforementioned account will give you an _API Key_, this is what you will use in the function below.
 
@@ -27,6 +30,8 @@ Let's walk you through `webhoser` with a simple use case: we'll get articles and
 ```{r, eval=TRUE, echo=FALSE}
 (token <- wh_token(key))
 ```
+
+# Get
 
 Great, now that we have a token, we can fetch some articles. We'll use some basic boolean search arguments and filters to narrow down the search to english and news (excludes blogs). We can expect the number of articles about the R Programming Language to be relatively low so we'll extend the date range to make sure we get a decent number of articles (functions default to the last 3 days), we'll also limit the search to blogs as this is where we'd expect R to be mentioned.
 
@@ -41,6 +46,8 @@ token %>%
 _Note that with the free version you are limited to 30 days of results_
 
 [webhose.io](https://webhose.io/) gives 1,000 results per month for free, `wh_news` and `wh_broadcasts` print the number of queries left by default.
+
+# Paginate
 
 We can paginate through the results if we want more data; let's get five more pages.
 
@@ -81,6 +88,24 @@ This returned `r nrow(rstats)` articles with lot of variables.
 
 ```{r}
 names(rstats)
+```
+
+```{r}
+library(dplyr)
+library(echarts4r)
+
+rstats %>% 
+  mutate(
+    date = as.Date(rstats$published, "%Y-%m-%d")
+  ) %>% 
+  count(date) %>% 
+  e_charts(date) %>%
+  e_line(n, legend = FALSE) %>% 
+  e_theme("westeros") %>% 
+  e_title(
+    "R programming", 
+    "Number of articles per day"
+  )
 ```
 
 [webhoser.io](https://webhose.io/) does some entity extraction for us, so we do not have to do it ourselves, the `data.frame` includes entitities mentioned in the body of the text along with the sentiment associated with it:

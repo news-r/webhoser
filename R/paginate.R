@@ -13,8 +13,8 @@
 #' token <- <- wh_token("xXX-x0X0xX0X-00X")
 #'
 #' token %>%
-#'   wh_news(q = "World Economic Forum") %>%
-#'   wh_paginate(p = 3) -> wef
+#'   wh_news(q = "Programming languages") %>%
+#'   wh_paginate(p = 3) -> lang
 #' }
 #'
 #' @importFrom methods new
@@ -28,7 +28,7 @@ wh_paginate <- function(wh, p = Inf, quiet = !interactive()) UseMethod("wh_pagin
 wh_paginate.webhoser <- function(wh, p = Inf, quiet = !interactive()){
 
   if(!isTRUE(quiet) && is.infinite(p))
-    warning("infinite paging", call. = FALSE)
+    cat(crayon::red(cli::symbol$warning), "infinite paging", crayon::red(cli::symbol$warning))
 
   # adapt p to moreResultAvailable
   p <- check_results(wh, p, quiet)
@@ -55,7 +55,7 @@ wh_paginate.webhoser <- function(wh, p = Inf, quiet = !interactive()){
     crawled <- crawled + 1
 
     if(!isTRUE(quiet))
-      message(content$requestsLeft, "queries left.")
+      cat(crayon::green(cli::symbol$pointer), crayon::red(content$requestsLeft), "queries left.\n")
   }
 
   wh
