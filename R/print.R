@@ -1,6 +1,6 @@
 #' @export
 print.webhoserToken <- function(x, ...) {
-  print("wehoser token", ...)
+  cat(crayon::blue("wehoser token"), ...)
 }
 
 #' @export
