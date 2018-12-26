@@ -74,7 +74,7 @@ wh_news <- function(token, q, ts = (Sys.time() - (3 * 24 * 60 * 60)), sort = NUL
   if(missing(token) || missing(q))
     stop("must pass token and q", call. = FALSE)
 
-  if(inherits(ts, "POSIXct") || inherits(ts, "POSIXlt")) ts <- paste0(as.character(as.numeric(ts)), '000')
+  if(inherits(ts, "POSIXct") || inherits(ts, "POSIXlt")) ts <- paste0(as.integer(ts), '000')
 
   uri <- getOption("webhoser_base_url")
   uri <- paste0(uri, "/filterWebContent")
