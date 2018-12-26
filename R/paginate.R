@@ -55,7 +55,7 @@ wh_paginate.webhoser <- function(wh, p = Inf, quiet = !interactive()){
     crawled <- crawled + 1
 
     if(!isTRUE(quiet))
-      cat(crayon::green(cli::symbol$pointer), crayon::red(content$requestsLeft), "queries left.\n")
+      cat(crayon::green(cli::symbol$tick), crayon::underline(content$requestsLeft), "pages available.\n")
   }
 
   wh
