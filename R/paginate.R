@@ -28,12 +28,15 @@ wh_paginate <- function(wh, p = Inf, quiet = !interactive()) UseMethod("wh_pagin
 wh_paginate.webhoser <- function(wh, p = Inf, quiet = !interactive()){
 
   if(!isTRUE(quiet) && is.infinite(p))
-    cat(crayon::red(cli::symbol$warning), "infinite paging", crayon::red(cli::symbol$warning))
-
+    cat(crayon::red(cli::symbol$warning), "infinite paging", crayon::red(cli::symbol$warning), "\n")
+  
   # adapt p to moreResultAvailable
   p <- check_results(wh, p, quiet)
 
   crawled <- 1 # track crawled page
+  
+  if(!isTRUE(quiet))
+    cat(crayon::blue(cli::symbol$circle_filled), "Results available:\n")
 
   while(length(wh$`next`) && crawled <= p){
 
@@ -55,7 +58,7 @@ wh_paginate.webhoser <- function(wh, p = Inf, quiet = !interactive()){
     crawled <- crawled + 1
 
     if(!isTRUE(quiet))
-      cat(crayon::green(cli::symbol$tick), crayon::underline(content$moreResultsAvailable), "results available.\n")
+      cat(crayon::yellow(cli::symbol$pointer), crayon::underline(content$moreResultsAvailable), "\n")
   }
 
   wh

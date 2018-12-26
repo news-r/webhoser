@@ -103,7 +103,7 @@ wh_news <- function(token, q, ts = (Sys.time() - (3 * 24 * 60 * 60)), sort = NUL
   content <- jsonlite::fromJSON(content, flatten = TRUE)
 
   if(!isTRUE(quiet))
-    cat(crayon::green(cli::symbol$pointer), crayon::red(content$requestsLeft), "queries left.\n")
+    cat(crayon::yellow(cli::symbol$info), crayon::underline(content$requestsLeft), "queries left.\n")
 
   construct(content)
 }
