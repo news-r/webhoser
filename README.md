@@ -14,7 +14,8 @@ An R wrapper to the [webhose.io](https://webhose.io/) API.
 ## Install
 
 ```r
-devtools::install_github("news-r/webhoser")
+# install.packages("remotes")
+remotes::install_github("news-r/webhoser")
 ```
 
 ## Functions
