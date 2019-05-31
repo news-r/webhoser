@@ -14,7 +14,7 @@ An R wrapper to the [webhose.io](https://webhose.io/) API.
 ## Install
 
 ```r
-devtools::install_github("JohnCoene/webhoser")
+devtools::install_github("news-r/webhoser")
 ```
 
 ## Functions
