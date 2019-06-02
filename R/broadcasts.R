@@ -31,7 +31,7 @@
 wh_broadcasts <- function(token, q, ts = (Sys.time() - (3 * 24 * 60 * 60)), highlight = NULL,
                           latest = NULL, quiet = !interactive()){
   
-  warning("This endpoint is no longer available", call. = FALSE)
+  stop("This endpoint is no longer available", call. = FALSE)
 
   if(missing(token) || missing(q))
     stop("must pass token and q", call. = FALSE)
