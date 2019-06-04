@@ -27,10 +27,16 @@ remotes::install_github("news-r/webhoser")
 * `wh_collect` - collect results
 * `wh_date` - format dates returned
 
+## Setup
+
+1. Visit [webhose.io](https://webhose.io/)
+2. Visit your [dashboard](https://webhose.io/dashboard).
+3. Use the "Active API Key" at the bottom with `wh_token`.
+
 ## Examples
 
 ```r
-token <- wh_token("xXX-x0X0xX0X-00X") # setup token
+wh_token("xXX-x0X0xX0X-00X") # setup token
 
 # webhoser object
 wh_news(q = '"R programming language" is_first:true language:english site_type:news') -> news
