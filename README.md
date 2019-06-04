@@ -33,25 +33,21 @@ remotes::install_github("news-r/webhoser")
 token <- wh_token("xXX-x0X0xX0X-00X") # setup token
 
 # webhoser object
-token %>% 
-  wh_news(q = '"R programming language" is_first:true language:english site_type:news') -> news
+wh_news(q = '"R programming language" is_first:true language:english site_type:news') -> news
 
 # basic
 # collect results
-token %>% 
-  wh_news(q = '"R programming language"') %>% # get news
+wh_news(q = '"R programming language"') %>% # get news
   wh_collect -> basic
   
 # flatten results
-token %>% 
-  wh_news(q = '"R programming language" OR rstats') %>% # get news
+wh_news(q = '"R programming language" OR rstats') %>% # get news
   wh_collect(TRUE) -> flat  # flatten results
 
 # get three pages on the rstats
 # format dates
-token %>%  
-  wh_news(q = '"R programming language" OR rstats') %>% 
+wh_news(q = '"R programming language" OR rstats') %>% 
   wh_paginate(3) %>% 
   wh_collect() %>% 
-  dplyr::mutate(published = wh_date(published)) -> wef
+  dplyr::mutate(published = wh_date(published)) -> rstats
 ```
