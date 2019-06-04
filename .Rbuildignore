@@ -7,3 +7,4 @@ key.rds
 _pkgdown.yml
 docs
 index.Rmd
+vignettes

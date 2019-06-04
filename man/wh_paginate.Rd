@@ -26,9 +26,9 @@ Paginate through query.
 \dontrun{
 token <- <- wh_token("xXX-x0X0xX0X-00X")
 
-token \%>\%
-  wh_news(q = "Programming languages") \%>\%
-  wh_paginate(p = 3) -> lang
+wh_news(q = "Programming languages") \%>\%
+  wh_paginate(p = 3) \%>\% 
+  wh_collect() -> lang
 }
 
 }

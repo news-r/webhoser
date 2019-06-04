@@ -16,9 +16,3 @@ Imports:
   cli,
   crayon
 RoxygenNote: 6.1.1
-Suggests: 
-    knitr,
-    rmarkdown,
-    echarts4r,
-    dplyr
-VignetteBuilder: knitr

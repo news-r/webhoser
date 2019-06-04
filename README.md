@@ -1,4 +1,4 @@
-[![Travis-CI Build Status](https://travis-ci.org/JohnCoene/webhoser.svg?branch=master)](https://travis-ci.org/JohnCoene/webhoser)
+[![Travis build status](https://travis-ci.org/news-r/webhoser.svg?branch=master)](https://travis-ci.org/news-r/webhoser)
 
 # webhoser
 

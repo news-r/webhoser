@@ -68,11 +68,10 @@ See \href{https://docs.webhose.io/v1.0/docs/filters-reference}{official document
 \dontrun{
 token <- wh_token("xXX-x0X0xX0X-00X")
 
-rstats <- wh_news(token, q = '"Programming language"') \%>\%  # use quote marks!
+rstats <- wh_news(q = '"Programming language"') \%>\%  # use quote marks!
   wh_collect() # collect results
 
-token \%>\%
-  wh_news(
+wh_news(
     q = paste0(
       '"US President" OR Trump crawled>:',
        as.numeric(Sys.time() - (3 * 24 * 60 * 60))

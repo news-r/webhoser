@@ -49,11 +49,10 @@
 #' \dontrun{
 #' token <- wh_token("xXX-x0X0xX0X-00X")
 #'
-#' rstats <- wh_news(token, q = '"Programming language"') %>%  # use quote marks!
+#' rstats <- wh_news(q = '"Programming language"') %>%  # use quote marks!
 #'   wh_collect() # collect results
 #'
-#' token %>%
-#'   wh_news(
+#' wh_news(
 #'     q = paste0(
 #'       '"US President" OR Trump crawled>:',
 #'        as.numeric(Sys.time() - (3 * 24 * 60 * 60))
@@ -71,8 +70,13 @@ wh_news <- function(token, q, ts = (Sys.time() - (3 * 24 * 60 * 60)), sort = NUL
                     accuracy = NULL, highlight = NULL, latest = NULL,
                     quiet = !interactive()){
 
-  if(missing(token) || missing(q))
-    stop("must pass token and q", call. = FALSE)
+  if(missing(q))
+    stop("must pass q", call. = FALSE)
+
+  if(!missing(token))
+    warning("token is deprecated, there is no need for this argument")
+
+  token <- wh_get_token(quiet)
 
   if(inherits(ts, "POSIXct") || inherits(ts, "POSIXlt")) ts <- paste0(as.integer(ts), '000')
 
