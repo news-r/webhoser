@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get broadcasts — wh_broadcasts • webhoser</title>
+<title>Get Reviews — wh_reviews • webhoser</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -31,9 +31,9 @@
 
 
 
-<meta property="og:title" content="Get broadcasts — wh_broadcasts" />
+<meta property="og:title" content="Get Reviews — wh_reviews" />
 
-<meta property="og:description" content="Get access to structured transcripts data from broadcasts." />
+<meta property="og:description" content="Get access to structured online reviews." />
 
 <meta property="og:image" content="http://webhoser.john-coene.com/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -125,30 +125,27 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get broadcasts</h1>
+    <h1>Get Reviews</h1>
     
-    <div class="hidden name"><code>wh_broadcasts.Rd</code></div>
+    <div class="hidden name"><code>wh_reviews.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Get access to structured transcripts data from broadcasts.</p>
+    <p>Get access to structured online reviews.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>wh_broadcasts</span>(<span class='no'>token</span>, <span class='no'>q</span>, <span class='kw'>ts</span> <span class='kw'>=</span> (<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/Sys.time'>Sys.time</a></span>() - (<span class='fl'>3</span> * <span class='fl'>24</span> * <span class='fl'>60</span> * <span class='fl'>60</span>)),
-  <span class='kw'>highlight</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>latest</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>quiet</span> <span class='kw'>=</span> !<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/interactive'>interactive</a></span>())</pre>
+    <pre class="usage"><span class='fu'>wh_reviews</span>(<span class='no'>q</span>, <span class='kw'>ts</span> <span class='kw'>=</span> (<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/Sys.time'>Sys.time</a></span>() - (<span class='fl'>3</span> * <span class='fl'>24</span> * <span class='fl'>60</span> * <span class='fl'>60</span>)), <span class='kw'>sort</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>order</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>accuracy</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>highlight</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>latest</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>quiet</span> <span class='kw'>=</span> !<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/interactive'>interactive</a></span>())</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>token</th>
-      <td><p>your token as returned by <code><a href='token.html'>wh_token</a></code>.</p></td>
-    </tr>
-    <tr>
       <th>q</th>
-      <td><p>a string query containing the filters that define which transcript lines will be returned.</p></td>
+      <td><p>a string query containing the filters that define which posts will be returned.</p></td>
     </tr>
     <tr>
       <th>ts</th>
@@ -156,8 +153,24 @@
 crawled after this timestamp (<code>POSIXct</code> or <code>POSIXlt</code>).</p></td>
     </tr>
     <tr>
+      <th>sort</th>
+      <td><p>by default (when the sort parameter isn't specified)
+the results are sorted by the recommended order of crawl date.
+See details for valid values.</p></td>
+    </tr>
+    <tr>
+      <th>order</th>
+      <td><p>If you choose to order the posts by any of the numeric <code>sort</code> values,
+you can choose in what order you want to get them: <code>asc</code> (default) or <code>desc</code>.</p></td>
+    </tr>
+    <tr>
+      <th>accuracy</th>
+      <td><p>return only posts with high extraction accuracy, but removes about 30<!-- % of -->
+the total matching posts (with lower confidence).</p></td>
+    </tr>
+    <tr>
       <th>highlight</th>
-      <td><p>return the fragments in the review that matched the textual Boolean query.
+      <td><p>return the fragments in the post that matched the textual Boolean query.
 The matched keywords will be surrounded by <code>&lt;em/&gt;</code> tags.</p></td>
     </tr>
     <tr>
@@ -170,22 +183,41 @@ The matched keywords will be surrounded by <code>&lt;em/&gt;</code> tags.</p></t
     </tr>
     </table>
     
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>object of class <code>webhoser</code></p>
+    
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>See <a href='https://docs.webhose.io/docs/filters-reference-4'>official documentation</a> for valid filters.</p>
+    <p>Valid sort values</p><ul>
+<li><p>relevancy</p></li>
+<li><p>social.facebook.likes</p></li>
+<li><p>social.facebook.shares</p></li>
+<li><p>social.facebook.comments</p></li>
+<li><p>social.gplus.shares</p></li>
+<li><p>social.pinterest.shares</p></li>
+<li><p>social.linkedin.shares</p></li>
+<li><p>social.stumbledupon.shares</p></li>
+<li><p>social.vk.shares</p></li>
+<li><p>replies_count</p></li>
+<li><p>participants_count</p></li>
+<li><p>spam_score</p></li>
+<li><p>performance_score</p></li>
+<li><p>published</p></li>
+<li><p>thread.published</p></li>
+<li><p>domain_rank</p></li>
+<li><p>ord_in_thread</p></li>
+<li><p>rating</p></li>
+</ul>
+    <p>See <a href='https://docs.webhose.io/v1.0/docs/filters-reference'>official documentation</a> for valid filters.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><span class='co'># NOT RUN {</span>
 <span class='no'>token</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='token.html'>wh_token</a></span>(<span class='st'>"xXX-x0X0xX0X-00X"</span>)
 
-<span class='no'>rstats</span> <span class='kw'>&lt;-</span> <span class='fu'>wh_broadcasts</span>(<span class='no'>token</span>, <span class='kw'>q</span> <span class='kw'>=</span> <span class='st'>'"R programming language"'</span>) <span class='kw'>%&gt;%</span>  <span class='co'># use quote marks!</span>
-  <span class='fu'><a href='wh_collect.html'>wh_collect</a></span>()
-
-<span class='no'>token</span> <span class='kw'>%&gt;%</span>
-  <span class='fu'>wh_broadcasts</span>(<span class='no'>token</span>, <span class='kw'>q</span> <span class='kw'>=</span> <span class='st'>'Trump OR "US President"'</span>) <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='wh_paginate.html'>wh_paginate</a></span>(<span class='kw'>p</span> <span class='kw'>=</span> <span class='fl'>2</span>) <span class='co'># 2 additional pages of results</span>
-  <span class='fu'><a href='wh_collect.html'>wh_collect</a></span>() <span class='kw'>-&gt;</span> <span class='no'>trump</span>
+<span class='no'>rstats</span> <span class='kw'>&lt;-</span> <span class='fu'>wh_reviews</span>(<span class='kw'>q</span> <span class='kw'>=</span> <span class='st'>'"ipad OR ipod"'</span>) <span class='kw'>%&gt;%</span>  <span class='co'># use quote marks!</span>
+  <span class='fu'><a href='wh_collect.html'>wh_collect</a></span>() <span class='co'># collect results</span>
 <span class='co'># }</span><div class='input'>
 </div></pre>
   </div>
@@ -194,6 +226,8 @@ The matched keywords will be surrounded by <code>&lt;em/&gt;</code> tags.</p></t
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
+      <li><a href="#value">Value</a></li>
+
       <li><a href="#details">Details</a></li>
       
       <li><a href="#examples">Examples</a></li>

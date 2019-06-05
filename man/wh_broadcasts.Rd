@@ -23,7 +23,7 @@ The matched keywords will be surrounded by \code{<em/>} tags.}
 \item{quiet}{if \code{FALSE} does not return useful information to console.}
 }
 \description{
-Get access to structured trasncripts data from broadcasts.
+Get access to structured transcripts data from broadcasts.
 }
 \details{
 See \href{https://docs.webhose.io/docs/filters-reference-4}{official documentation} for valid filters.

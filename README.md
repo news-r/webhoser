@@ -22,10 +22,11 @@ remotes::install_github("news-r/webhoser")
 
 * `wh_token` - Setup token (see [webhose.io](https://webhose.io/))
 * `wh_news` - Get news
-* `wh_broadcasts` - Get broadcast transcripts
-* `wh_paginate` - paginate
-* `wh_collect` - collect results
-* `wh_date` - format dates returned
+* `wh_reviews` - Get reviews
+* `wh_broadcasts` - Get broadcast transcripts ~~no longer available~~
+* `wh_paginate` - Paginate
+* `wh_collect` - Collect results
+* `wh_date` - Format dates returned
 
 ## Setup
 
