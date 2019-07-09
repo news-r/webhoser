@@ -56,7 +56,7 @@ wh_news(q = '"R programming language" is_first:true language:english site_type:n
 # basic
 # collect results
 wh_news(q = '"R programming language"') %>% # get news
-  wh_collect -> basic
+  wh_collect() -> basic
   
 # flatten results
 wh_news(q = '"R programming language" OR rstats') %>% # get news
