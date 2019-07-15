@@ -1,5 +1,5 @@
 <!-- badges: start -->
-[![Travis build status](https://travis-ci.org/JohnCoene/webhoser.svg?branch=master)](https://travis-ci.org/JohnCoene/webhoser)
+[![Build Status](https://travis-ci.org/news-r/webhoser.svg?branch=master)](https://travis-ci.org/news-r/webhoser)
 <!-- badges: end -->
 
 ```{r, include=FALSE}
