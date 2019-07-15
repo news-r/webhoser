@@ -1,9 +1,5 @@
-url: http://webhoser.john-coene.com
-
 template:
-  params:
-    bootswatch: lumen
-    ganalytics: UA-74544116-1
+  package: newsrdown
 
 development:
   mode: unreleased
@@ -20,9 +16,7 @@ navbar:
       href: "reference/"
   right:
     - icon: fa-github fa-lg
-      href: https://github.com/JohnCoene/webhoser
-    - icon: fa-bitbucket fa-lg
-      href: https://bitbucket.org/JohnCoene/webhoser
+      href: https://github.com/news-r/webhoser
 
 authors:
   John Coene:

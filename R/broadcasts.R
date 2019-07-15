@@ -1,6 +1,6 @@
 #' Get broadcasts
 #'
-#' Get access to structured trasncripts data from broadcasts.
+#' Get access to structured transcripts data from broadcasts.
 #'
 #' @param token your token as returned by \code{\link{wh_token}}.
 #' @param q a string query containing the filters that define which transcript lines will be returned.
@@ -33,8 +33,13 @@ wh_broadcasts <- function(token, q, ts = (Sys.time() - (3 * 24 * 60 * 60)), high
   
   stop("This endpoint is no longer available", call. = FALSE)
 
-  if(missing(token) || missing(q))
-    stop("must pass token and q", call. = FALSE)
+  if(missing(q))
+    stop("must pass q", call. = FALSE)
+
+  if(!missing(token))
+    warning("token is deprecated, there is no need for this argument")
+
+  token <- wh_get_token(quiet)
 
   if(inherits(ts, "POSIXct")) ts <- paste0(as.character(as.numeric(ts) * 1000), '000')
 

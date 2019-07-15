@@ -1,8 +1,7 @@
-#' Get news
+#' Get Reviews
 #'
-#' Get access to structured posts data from news articles, blog posts and online discussions.
+#' Get access to structured online reviews.
 #'
-#' @param token your token as returned by \code{\link{wh_token}}.
 #' @param q a string query containing the filters that define which posts will be returned.
 #' @param ts The "ts" (timestamp) parameter is telling the system to return results that were
 #' crawled after this timestamp (\code{POSIXct} or \code{POSIXlt}).
@@ -49,32 +48,17 @@
 #' \dontrun{
 #' token <- wh_token("xXX-x0X0xX0X-00X")
 #'
-#' rstats <- wh_news(q = '"Programming language"') %>%  # use quote marks!
+#' rstats <- wh_reviews(q = '"ipad OR ipod"') %>%  # use quote marks!
 #'   wh_collect() # collect results
-#'
-#' wh_news(
-#'     q = paste0(
-#'       '"US President" OR Trump crawled>:',
-#'        as.numeric(Sys.time() - (3 * 24 * 60 * 60))
-#'      )
-#'   ) %>%
-#'   wh_paginate(
-#'     p = 1, 
-#'     ts = as.numeric(Sys.time() - (3 * 24 * 60 * 60))
-#'   ) %>% 
-#'   wh_collect() -> trump
 #' }
 #'
 #' @export
-wh_news <- function(token, q, ts = (Sys.time() - (3 * 24 * 60 * 60)), sort = NULL, order = NULL,
+wh_reviews <- function(q, ts = (Sys.time() - (3 * 24 * 60 * 60)), sort = NULL, order = NULL,
                     accuracy = NULL, highlight = NULL, latest = NULL,
                     quiet = !interactive()){
 
   if(missing(q))
     stop("must pass q", call. = FALSE)
-
-  if(!missing(token))
-    warning("token is deprecated, there is no need for this argument")
 
   token <- wh_get_token(quiet)
 

@@ -1,4 +1,4 @@
-[![Travis-CI Build Status](https://travis-ci.org/JohnCoene/webhoser.svg?branch=master)](https://travis-ci.org/JohnCoene/webhoser)
+[![Travis build status](https://travis-ci.org/JohnCoene/webhoser.svg?branch=master)](https://travis-ci.org/JohnCoene/webhoser)
 
 # webhoser
 
@@ -6,51 +6,58 @@
 
 An R wrapper to the [webhose.io](https://webhose.io/) API.
 
-* [Install](#install)
-* [Function](#functions)
-* [Examples](#examples)
-* [Get Started](http://webhoser.john-coene.com/)
+- [webhoser](#webhoser)
+  - [Install](#Install)
+  - [Functions](#Functions)
+  - [Setup](#Setup)
+  - [Examples](#Examples)
 
 ## Install
 
 ```r
-devtools::install_github("JohnCoene/webhoser")
+# install.packages("remotes")
+remotes::install_github("news-r/webhoser")
 ```
 
 ## Functions
 
 * `wh_token` - Setup token (see [webhose.io](https://webhose.io/))
 * `wh_news` - Get news
-* `wh_broadcasts` - Get broadcast transcripts
-* `wh_paginate` - paginate
-* `wh_collect` - collect results
-* `wh_date` - format dates returned
+* `wh_reviews` - Get reviews
+* `wh_broadcasts` - Get broadcast transcripts ~~no longer available~~
+* `wh_paginate` - Paginate
+* `wh_collect` - Collect results
+* `wh_date` - Format dates returned
+
+## Setup
+
+1. Visit [webhose.io](https://webhose.io/)
+2. Visit your [dashboard](https://webhose.io/dashboard).
+3. Use the "Active API Key" at the bottom with `wh_token`.
 
 ## Examples
 
+Visit the [website](https://webhoser.news-r.org/) for a more thorough example.
+
 ```r
-token <- wh_token("xXX-x0X0xX0X-00X") # setup token
+wh_token("xXX-x0X0xX0X-00X") # setup token
 
 # webhoser object
-token %>% 
-  wh_news(q = '"R programming language" is_first:true language:english site_type:news') -> news
+wh_news(q = '"R programming language" is_first:true language:english site_type:news') -> news
 
 # basic
 # collect results
-token %>% 
-  wh_news(q = '"R programming language"') %>% # get news
+wh_news(q = '"R programming language"') %>% # get news
   wh_collect -> basic
   
 # flatten results
-token %>% 
-  wh_news(q = '"R programming language" OR rstats') %>% # get news
+wh_news(q = '"R programming language" OR rstats') %>% # get news
   wh_collect(TRUE) -> flat  # flatten results
 
 # get three pages on the rstats
 # format dates
-token %>%  
-  wh_news(q = '"R programming language" OR rstats') %>% 
+wh_news(q = '"R programming language" OR rstats') %>% 
   wh_paginate(3) %>% 
   wh_collect() %>% 
-  dplyr::mutate(published = wh_date(published)) -> wef
+  dplyr::mutate(published = wh_date(published)) -> rstats
 ```
