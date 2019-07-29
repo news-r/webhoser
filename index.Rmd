@@ -34,7 +34,7 @@ br()
 ## Install
 
 ```r
-devtools::install_github("JohnCoene/webhoser")
+devtools::install_github("news-r/webhoser")
 ```
 
 ## Setup

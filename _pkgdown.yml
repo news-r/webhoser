@@ -7,13 +7,10 @@ development:
 navbar:
   title: "webhoser"
   left:
-    - icon: fa-home
-      href: index.html
-    - icon: fa-rocket
-      text: "Get Started"
-      href: "articles/started.html"
     - text: "Reference"
       href: "reference/"
+    - text: "Get Started"
+      href: "articles/started.html"
   right:
     - icon: fa-github fa-lg
       href: https://github.com/news-r/webhoser

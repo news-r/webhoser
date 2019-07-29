@@ -47,24 +47,16 @@
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav navbar-right">
-<li>
-  <a href="index.html">
-    <span class="fa fa-home"></span>
-     
-  </a>
-</li>
-<li>
-  <a href="articles/started.html">
-    <span class="fa fa-rocket"></span>
-     
-    Get Started
-  </a>
-</li>
+      <ul class="nav navbar-nav navbar-left">
 <li>
   <a href="reference/">Reference</a>
 </li>
-        <li>
+<li>
+  <a href="articles/started.html">Get Started</a>
+</li>
+      </ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
   <a href="https://github.com/news-r/webhoser">
     <span class="fa fa-github fa-lg"></span>
      
@@ -101,7 +93,7 @@ API.
 <br><div id="install" class="section level2">
 <h2 class="hasAnchor">
 <a href="#install" class="anchor"></a>Install</h2>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">"JohnCoene/webhoser"</span>)</code></pre></div>
+<pre class="sourceCode r" id="cb1"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">"news-r/webhoser"</span>)</a></code></pre>
 </div>
 <div id="setup" class="section level2">
 <h2 class="hasAnchor">
@@ -116,26 +108,26 @@ API.
 <div id="examples" class="section level2">
 <h2 class="hasAnchor">
 <a href="#examples" class="anchor"></a>Examples</h2>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="reference/token.html">wh_token</a></span>(<span class="st">"xXX-x0X0xX0X-00X"</span>) <span class="co"># setup token</span>
-
-<span class="co"># webhoser object</span>
-<span class="kw"><a href="reference/wh_news.html">wh_news</a></span>(<span class="dt">q =</span> <span class="st">'"R programming language" is_first:true language:english site_type:news'</span>) -&gt;<span class="st"> </span>news
-
-<span class="co"># basic</span>
-<span class="co"># collect results</span>
-<span class="kw"><a href="reference/wh_news.html">wh_news</a></span>(<span class="dt">q =</span> <span class="st">'"R programming language"'</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># get news</span>
-<span class="st">  </span><span class="kw"><a href="reference/wh_collect.html">wh_collect</a></span>() -&gt;<span class="st"> </span>basic
-  
-<span class="co"># flatten results</span>
-<span class="kw"><a href="reference/wh_news.html">wh_news</a></span>(<span class="dt">q =</span> <span class="st">'"R programming language" OR rstats'</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># get news</span>
-<span class="st">  </span><span class="kw"><a href="reference/wh_collect.html">wh_collect</a></span>(<span class="ot">TRUE</span>) -&gt;<span class="st"> </span>flat  <span class="co"># flatten results</span>
-
-<span class="co"># get three pages on the rstats</span>
-<span class="co"># format dates</span>
-<span class="kw"><a href="reference/wh_news.html">wh_news</a></span>(<span class="dt">q =</span> <span class="st">'"R programming language" OR rstats'</span>) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="reference/wh_paginate.html">wh_paginate</a></span>(<span class="dv">3</span>) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="reference/wh_collect.html">wh_collect</a></span>() <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">published =</span> <span class="kw">wh_date</span>(published)) -&gt;<span class="st"> </span>rstats</code></pre></div>
+<pre class="sourceCode r" id="cb2"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="reference/token.html">wh_token</a></span>(<span class="st">"xXX-x0X0xX0X-00X"</span>) <span class="co"># setup token</span></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="co"># webhoser object</span></a>
+<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="kw"><a href="reference/wh_news.html">wh_news</a></span>(<span class="dt">q =</span> <span class="st">'"R programming language" is_first:true language:english site_type:news'</span>) -&gt;<span class="st"> </span>news</a>
+<a class="sourceLine" id="cb2-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="co"># basic</span></a>
+<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="co"># collect results</span></a>
+<a class="sourceLine" id="cb2-8" data-line-number="8"><span class="kw"><a href="reference/wh_news.html">wh_news</a></span>(<span class="dt">q =</span> <span class="st">'"R programming language"'</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># get news</span></a>
+<a class="sourceLine" id="cb2-9" data-line-number="9"><span class="st">  </span><span class="kw"><a href="reference/wh_collect.html">wh_collect</a></span>() -&gt;<span class="st"> </span>basic</a>
+<a class="sourceLine" id="cb2-10" data-line-number="10">  </a>
+<a class="sourceLine" id="cb2-11" data-line-number="11"><span class="co"># flatten results</span></a>
+<a class="sourceLine" id="cb2-12" data-line-number="12"><span class="kw"><a href="reference/wh_news.html">wh_news</a></span>(<span class="dt">q =</span> <span class="st">'"R programming language" OR rstats'</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># get news</span></a>
+<a class="sourceLine" id="cb2-13" data-line-number="13"><span class="st">  </span><span class="kw"><a href="reference/wh_collect.html">wh_collect</a></span>(<span class="ot">TRUE</span>) -&gt;<span class="st"> </span>flat  <span class="co"># flatten results</span></a>
+<a class="sourceLine" id="cb2-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb2-15" data-line-number="15"><span class="co"># get three pages on the rstats</span></a>
+<a class="sourceLine" id="cb2-16" data-line-number="16"><span class="co"># format dates</span></a>
+<a class="sourceLine" id="cb2-17" data-line-number="17"><span class="kw"><a href="reference/wh_news.html">wh_news</a></span>(<span class="dt">q =</span> <span class="st">'"R programming language" OR rstats'</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb2-18" data-line-number="18"><span class="st">  </span><span class="kw"><a href="reference/wh_paginate.html">wh_paginate</a></span>(<span class="dv">3</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb2-19" data-line-number="19"><span class="st">  </span><span class="kw"><a href="reference/wh_collect.html">wh_collect</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb2-20" data-line-number="20"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">published =</span> <span class="kw">wh_date</span>(published)) -&gt;<span class="st"> </span>rstats</a></code></pre>
 </div>
   </div>
 
